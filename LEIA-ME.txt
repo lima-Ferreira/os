@@ -1,0 +1,13 @@
+ORDEM DE SERVIÇO - ETIQUETAS V5.0
+
+1. Dê dois cliques em ABRIR-SISTEMA.bat.
+2. Preencha o formulário.
+3. A pré-visualização à direita atualiza automaticamente.
+4. Escolha Grande (12 cm) ou Pequena (8 cm).
+5. Clique em Salvar & Gerar PDF.
+6. Na janela de impressão, escolha Salvar como PDF e mantenha 100% / Tamanho real.
+
+IMPORTANTE:
+- A lógica da descrição de PRODUTOS continua autoajustável e sempre em uma única linha.
+- São geradas 2 etiquetas com linha pontilhada/tesoura.
+- Limpar Formulário pede confirmação.

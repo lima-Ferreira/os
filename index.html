@@ -1,308 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Etiqueta de Identificação</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f8f8ff;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-        }
-
-        header {
-            background: purple;
-            color: white;
-            text-align: center;
-            padding: 12px 0 6px 0;
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        main {
-            max-width: 700px;
-            margin: 10px auto;
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-top: 8px;
-            font-weight: bold;
-            color: purple;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 6px;
-            margin-top: 3px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        .linha {
-            display: flex;
-        }
-
-        .linha div {
-            flex: 1;
-        }
-
-        .linha div+div {
-            margin-left: 10px;
-        }
-
-        .buttons {
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        button {
-            flex: 1;
-            margin: 5px;
-            padding: 8px;
-            font-size: 14px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .save {
-            background: purple;
-            color: white;
-        }
-
-        .save:hover {
-            background: darkmagenta;
-        }
-
-        .clear {
-            background: #ccc;
-        }
-
-        .clear:hover {
-            background: #999;
-            color: white;
-        }
-    </style>
-</head>
-
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ordem de Serviço - Etiquetas V5</title>
+<style>
+*{box-sizing:border-box} :root{--red:#d71920;--red2:#ef3340;--navy:#102d5b;--ink:#142033;--muted:#6c7a91;--line:#dce4ef;--panel:#fff;--bg:#f4f7fb}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);margin:0;color:var(--ink)}
+.topbar{height:94px;background:#fff;border-bottom:1px solid #e4e9f1;display:flex;align-items:center;gap:28px;padding:0 30px;box-shadow:0 2px 8px #19304d0d}.brand{align-self:stretch;width:320px;background:linear-gradient(135deg,#e21c2a 0 84%,transparent 84%);margin-left:-30px;display:flex;align-items:center;padding:0 48px 0 38px}.brand img{width:190px;height:58px;object-fit:contain}.titlewrap{display:flex;align-items:center;gap:15px;flex:1}.tagicon{font-size:34px}.titlewrap h1{margin:0;font-size:28px;color:#101827}.titlewrap p{margin:4px 0 0;color:var(--muted);font-size:15px}.topactions{display:flex;gap:10px}.topaction{width:105px;height:66px;border:1px solid #d7e0ec;border-radius:9px;background:#fff;color:var(--navy);font-weight:700;font-size:12px;cursor:pointer}.topaction b{display:block;font-size:20px;margin-bottom:4px}
+.app{display:grid;grid-template-columns:470px 1fr;gap:12px;padding:12px 18px 18px;max-width:1600px;margin:auto}.panel{background:#fff;border:1px solid #e3e9f1;border-radius:10px;box-shadow:0 3px 12px #17324d0b}.formpanel{padding:14px}.sectionhead{background:linear-gradient(90deg,#f7f9fc,#fff);border:1px solid #edf1f6;border-radius:8px;padding:12px 14px;display:flex;gap:12px;align-items:center;margin-bottom:10px}.sectionhead .ico{width:40px;height:40px;border-radius:8px;background:#fff0f0;color:var(--red);display:grid;place-items:center;font-size:21px}.sectionhead h2{font-size:18px;margin:0;color:var(--navy)}.sectionhead p{font-size:13px;color:var(--muted);margin:2px 0 0}.field{display:grid;grid-template-columns:145px 1fr;align-items:center;gap:8px;margin:7px 0}.field label{font-weight:700;color:var(--navy);font-size:13px}.field input,.field select{width:100%;height:36px;border:1px solid #cfd9e6;border-radius:6px;padding:0 10px;font-size:13px;background:#fff;color:#172238;outline:none}.field input:focus,.field select:focus{border-color:#7da2d5;box-shadow:0 0 0 3px #eaf2ff}.two-selects{display:grid;grid-template-columns:1fr 1fr;gap:8px}.two-selects .field{display:block}.two-selects .field label{display:block;margin-bottom:5px}.two-selects .field select{font-size:11px}.sizebox{margin-top:12px}.sizecards{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sizecard{border:1px solid #d6deea;border-radius:8px;padding:12px;display:flex;gap:10px;align-items:center;cursor:pointer;background:#fff}.sizecard:has(input:checked){border:2px solid var(--red);background:#fff6f6}.sizecard input{accent-color:var(--red);width:20px;height:20px}.sizecard strong{display:block;color:#172238}.sizecard:has(input:checked) strong{color:var(--red)}.sizecard small{display:block;color:var(--muted);margin-top:3px}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.buttons button{height:52px;border:0;border-radius:7px;font-size:14px;font-weight:700;cursor:pointer}.save{background:linear-gradient(135deg,#df1f2d,#c8101d);color:#fff}.clear{background:#e9edf2;color:#1b2738}.hint{text-align:center;font-size:11px;color:#7b8799;margin-top:8px}
+.previewpanel{padding:12px}.previewtop{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}.previewtop .sectionhead{margin:0;flex:1}.warning{border:1px solid #ffc5c5;background:#fff4f4;color:#c31924;border-radius:7px;padding:9px 12px;font-size:11px;line-height:1.35}.previewgroup{border:1px solid #e1e8f1;border-radius:8px;overflow:hidden;margin-bottom:10px}.grouphead{height:38px;padding:0 12px;display:flex;align-items:center;justify-content:space-between;font-weight:700}.grouphead.large{background:#fff0f0;color:#c71922;border-bottom:1px solid #ffcaca}.grouphead.small{background:#edf5ff;color:#173f77;border-bottom:1px solid #c9ddf7}.grouphead span:last-child{font-size:12px}.previewrow{display:flex;justify-content:center;align-items:center;gap:16px;padding:12px;background:#fff}.previewcut{height:100%;min-height:230px;border-left:1px dashed #53657a;position:relative}.previewcut:after{content:'✂';position:absolute;left:-11px;top:48%;background:#fff;font-size:22px}.p-label{border:2px solid #111;background:#fff;color:#111;padding:8px;flex:none}.p-label.large{width:43%;min-width:390px}.p-label.small{width:31%;min-width:300px;padding:7px}.p-top{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center;border-bottom:1px solid #555;padding-bottom:5px;margin-bottom:6px}.p-logo{object-fit:contain;object-position:left center}.large .p-logo{width:92px;height:38px}.small .p-logo{width:72px;height:30px}.p-title{text-align:center;background:#eaf2f8;font-weight:800;padding:5px 3px;font-size:14px}.small .p-title{font-size:11px}.p-sub{grid-column:1/-1;text-align:center;font-weight:700;font-size:8px;line-height:1.4}.small .p-sub{font-size:6.5px}.p-fields{display:grid;grid-template-columns:max-content minmax(10px,1fr) minmax(0,2fr);gap:3px 4px;align-items:end;font-size:9px}.small .p-fields{font-size:7px;grid-template-columns:max-content minmax(5px,1fr) minmax(0,2.25fr);gap:2px 3px}.p-name{font-weight:700;white-space:nowrap}.p-dots{border-bottom:1px dotted #555;transform:translateY(-3px)}.p-val{white-space:nowrap;overflow:hidden;min-width:0}.p-val.prod{font-size:8px}.small .p-val.prod{font-size:6px}.bottominfo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}.info{border-top:1px solid #dbe3ed;padding:10px 12px;font-size:11px;color:#5d6b7e}.info strong{color:var(--navy);font-size:12px}.footer{font-size:11px;color:#68778c;padding:8px 20px 14px;max-width:1600px;margin:auto;display:flex;justify-content:space-between}
+#printArea{display:none}
+@media(max-width:1100px){.app{grid-template-columns:1fr}.topactions{display:none}.brand{width:250px}.p-label.large{min-width:330px}.previewrow{overflow:auto;justify-content:flex-start}}
+@media print{body{background:#fff}body>*:not(#printArea){display:none!important}#printArea{display:flex!important;flex-direction:column;align-items:center;width:100%;margin:0;padding:7mm 0}.etiqueta{border:.45mm solid #111;padding:3mm;position:relative;background:#fff}.etiqueta.grande{width:12cm;min-height:6.8cm}.etiqueta.pequena{width:8cm;min-height:5.25cm;padding:2mm}.topo{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:3mm;border-bottom:.25mm solid #444;padding-bottom:2mm;margin-bottom:2.5mm}.logo{object-fit:contain;object-position:left center}.grande .logo{width:26mm;height:10mm}.pequena .logo{width:18mm;height:7mm}.titulo{text-align:center;font-weight:800;background:#e9f2f8;padding:1.2mm 1mm}.grande .titulo{font-size:12pt}.pequena .titulo{font-size:8.5pt}.subtopo{grid-column:1/-1;text-align:center;font-weight:700;line-height:1.35}.grande .subtopo{font-size:7.4pt}.pequena .subtopo{font-size:5.8pt}.campos{display:grid;grid-template-columns:max-content minmax(8mm,1fr) minmax(0,2.05fr);column-gap:1.2mm;row-gap:1.25mm;align-items:end}.campo-label{font-weight:700;white-space:nowrap}.campo-pontos{border-bottom:.3mm dotted #333;transform:translateY(-1.1mm);min-width:8mm}.campo-valor{text-align:left;overflow-wrap:normal;line-height:1.15;min-width:0}.campo-valor.produto{white-space:nowrap;overflow:visible;letter-spacing:-.08mm}.campo-pontos.produto-pontos{min-width:0}.grande .campo-valor.produto{font-size:7.2pt}.pequena .campo-valor.produto{font-size:5.05pt;letter-spacing:-.11mm}.grande .campos{font-size:8.3pt}.pequena .campos{font-size:6.15pt;grid-template-columns:max-content minmax(4mm,1fr) minmax(0,2.25fr);column-gap:.8mm;row-gap:.85mm}.corte{display:flex;align-items:center;width:12cm;height:9mm;font-size:14pt}.corte.peq{width:8cm}.corte:before{content:'✂';margin-right:2mm}.corte:after{content:'';flex:1;border-top:.35mm dashed #222}@page{size:A4 portrait;margin:0}}
+</style></head>
 <body>
-    <header>ORDEM DE SERVIÇO - OS</header>
-    <main>
-        <form id="etiquetaForm">
-            <label>Nome: <input type="text" name="nome"></label>
-
-            <div class="linha">
-                <div><label>Endereço:</label><input type="text" name="endereco"></div>
-                <div><label>Número:</label><input type="text" name="numero"></div>
-            </div>
-
-            <label>Bairro: <input type="text" name="bairro"></label>
-            <label>Telefone: <input type="text" name="telefone"></label>
-            <label>Produtos: <input type="text" name="produtos"></label>
-
-            <div class="linha">
-                <div><label>Número da Venda:</label><input type="text" name="venda"></div>
-                <div><label>Número da Nota:</label><input type="text" name="nota"></div>
-            </div>
-
-            <div class="linha">
-                <div><label>Número de Série:</label><input type="text" name="serie"></div>
-                <div><label>Número da OS:</label><input type="text" name="osdaLoja"></div>
-            </div>
-
-            <label>Ordem de Serviços: <input type="text" name="ordemServicos"></label>
-
-            <div class="linha">
-                <div>
-                    <label>Loja de Origem:</label>
-                    <select name="lojaOrigem">
-                        <option value="">SELECIONAR LOJA DE ORIGEM</option>
-                        <option>J O DE LIMA LTDA - MATRIZ</option>
-                        <option>J O DE LIMA LTDA - PALHANO</option>
-                        <option>J O DE LIMA LTDA - JAGUARUANA</option>
-                        <option>J O DE LIMA LTDA - DEPOSITO</option>
-                        <option>J O DE LIMA LTDA - LOJA 05</option>
-                        <option>J O DE LIMA LTDA - LIMOEIRO</option>
-                        <option>J O DE LIMA LTDA - ITAIÇABA</option>
-                        <option>J O DE LIMA LTDA - FLORES</option>
-                        <option>J O DE LIMA LTDA - ARACATI</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Autorizada:</label>
-                    <select name="autorizada">
-                        <option value="">SELECIONAR AUTORIZADA</option>
-                        <option>AUTORIZADA - LIVERTEC</option>
-                        <option>AUTORIZADA - ELETRONICA GAUDENCIO</option>
-                        <option>AUTORIZADA - ELECTROLUX LIMOEIRO</option>
-                        <option>AUTORIZADA - ELETRO REFRIGERAÇAO LIMOEIRENSE</option>
-                        <option>AUTORIZADA - WALBER</option>
-                        <option>AUTORIZADA - OUTROS</option>
-                    </select>
-                </div>
-            </div>
-            <label>Defeito: <input type="text" name="defeito"></label>
-
-            <label>Data: <input type="text" name="dataAtual" readonly></label>
-
-            <div class="buttons">
-                <button type="button" class="save" onclick="salvarGerarPDF()">Salvar & Gerar PDF</button>
-                <button type="button" class="clear" onclick="limparFormulario()">Limpar Formulário</button>
-            </div>
-        </form>
-    </main>
-    <script>
-        const form = document.getElementById("etiquetaForm");
-
-        window.onload = () => {
-            const dados = JSON.parse(localStorage.getItem("etiqueta")) || {};
-            Object.keys(dados).forEach(campo => {
-                if (form.elements[campo]) form.elements[campo].value = dados[campo];
-            });
-            if (!form.elements.dataAtual.value)
-                form.elements.dataAtual.value = new Date().toLocaleDateString('pt-BR');
-        };
-
-        function salvarGerarPDF() {
-            const form = document.getElementById("etiquetaForm");
-
-            // Validação: não gerar PDF se algum input estiver vazio
-            const inputs = Array.from(form.elements).filter(el => el.name);
-            for (let input of inputs) {
-                if (!input.value.trim()) {
-                    alert(`O campo "${input.name}" está vazio. Preencha todos os campos antes de gerar o PDF.`);
-                    input.focus();
-                    return;
-                }
-            }
-
-            // Coletar dados do formulário
-            const dados = {};
-            for (let el of inputs) {
-                dados[el.name] = el.value;
-            }
-
-            localStorage.setItem("etiqueta", JSON.stringify(dados));
-
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-
-            const pageWidth = doc.internal.pageSize.getWidth();
-            let y = 6;
-
-            // Header centralizado
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(14);
-            doc.text("ETIQUETA DE IDENTIFICAÇÃO", pageWidth / 2, y + 3, { align: "center" });
-
-            // Informações da loja e data
-            doc.setFont("helvetica", "normal");
-            doc.setFontSize(8);
-            y += 8;
-            const infoHeader = [
-                `LOJA DE ORIGEM: ${dados.lojaOrigem.toUpperCase()}`,
-                `${dados.autorizada.toUpperCase()}`,
-                `DATA: ${dados.dataAtual.toUpperCase()}`
-            ];
-            infoHeader.forEach((text, i) => {
-                doc.text(text, pageWidth / 2, y + i * 4, { align: "center" });
-            });
-            y += infoHeader.length * 4 + -2;
-
-            // Caixa principal centralizada
-            const contentWidth = pageWidth * 0.7;
-            const contentX = (pageWidth - contentWidth) / 2;
-            const padding = 3;
-            const lineHeight = 3.2;
-
-            // Linhas do conteúdo
-            const linhas = [];
-            const ordemCampos = [
-                "nome", "endereco", "numero", "bairro", "telefone", "produtos",
-                "venda", "nota", "serie", "osdaLoja", "ordemServicos", "defeito"
-            ];
-            let contentHeight = 0;
-            for (let campo of ordemCampos) {
-                let label = campo.toUpperCase() + ": ";
-                let value = dados[campo].toUpperCase();
-                linhas.push({ label, value });
-                contentHeight += lineHeight + 1.5;
-            }
-
-            // Desenhar a borda centralizada
-            const contentY = y;
-            doc.setDrawColor(50, 50, 50);
-            doc.setLineWidth(0.5);
-            doc.rect(contentX, contentY, contentWidth, contentHeight + 2 * padding);
-
-            // Inserir a logo dinamicamente no canto superior direito da caixa
-            const logoWidth = 20;
-            const logoHeight = 10;
-            const logoX = contentX + contentWidth - padding - logoWidth;
-            const logoY = contentY + padding;
-
-            const img = new Image();
-            img.src = "logo.png"; // caminho relativo da logo
-            img.onload = function () {
-                doc.addImage(img, "PNG", logoX, logoY, logoWidth, logoHeight);
-
-                // Inserir texto dentro da caixa, alinhado à esquerda
-                let textY = contentY + padding + 2;
-                for (let { label, value } of linhas) {
-                    doc.setFont("helvetica", "bold");
-                    doc.setFontSize(8);
-                    doc.text(label, contentX + padding, textY);
-
-                    doc.setFont("helvetica", "normal");
-                    doc.setFontSize(8);
-                    const splitText = doc.splitTextToSize(value, contentWidth - doc.getTextWidth(label) - 2 * padding);
-                    doc.text(splitText, contentX + padding + doc.getTextWidth(label), textY);
-
-                    textY += Math.max(splitText.length, 1) * lineHeight + 1.5;
-                }
-
-                // Linha pontilhada com tesoura
-                const corteY = contentY + contentHeight + padding + 5;
-                doc.setLineWidth(0.1);
-                doc.setDrawColor(0, 0, 0);
-                const dashLength = 2;
-                for (let i = contentX; i < contentX + contentWidth; i += dashLength * 2) {
-                    doc.line(i, corteY, i + dashLength, corteY);
-                }
-                doc.setFont("helvetica", "bold");
-                doc.setFontSize(10);
-                doc.text("✂", contentX + 2, corteY - 1);
-
-                // Salvar PDF
-                doc.save("etiqueta.pdf");
-                alert("Dados salvos e PDF gerado!");
-            };
-        }
-
-
-
-        function limparFormulario() {
-            localStorage.removeItem("etiqueta");
-            form.reset();
-            form.elements.dataAtual.value = new Date().toLocaleDateString('pt-BR');
-            alert("Formulário limpo!");
-        }
-    </script>
-
-</body>
-
-</html>
+<header class="topbar"><div class="brand"><img src="logo.png" alt="Maravilha"></div><div class="titlewrap"><div class="tagicon">🏷️</div><div><h1>Ordem de Serviço - Etiquetas</h1><p>Preencha os dados e gere etiquetas de identificação</p></div></div><div class="topactions"><button class="topaction" onclick="salvarGerarPDF()"><b>🖨️</b>Imprimir<br>Salvar em PDF</button><button class="topaction" onclick="document.querySelector('[name=tamanho]').focus()"><b>⚙️</b>Configurações<br>de etiqueta</button><button class="topaction" onclick="alert('Preencha os dados, escolha o tamanho e clique em Salvar & Gerar PDF. Na impressão use 100% / Tamanho real.')"><b>?</b>Sobre<br>o Sistema</button></div></header>
+<div class="app">
+<section class="panel formpanel"><div class="sectionhead"><div class="ico">📄</div><div><h2>Dados da Etiqueta</h2><p>Preencha as informações abaixo</p></div></div>
+<form id="etiquetaForm">
+<div class="field"><label>👤 Nome:</label><input name="nome" required></div><div class="field"><label>☎ Telefone:</label><input name="telefone" required></div><div class="field"><label>📦 Produtos:</label><input name="produtos" required></div><div class="field"><label>🛒 Venda:</label><input name="venda" required></div><div class="field"><label>📄 Nota:</label><input name="nota" required></div><div class="field"><label>▥ Número de Série:</label><input name="serie" required></div><div class="field"><label>🔧 OS da loja:</label><input name="osdaLoja" required></div><div class="field"><label>🏭 OS do fabricante:</label><input name="ordemServicos" required></div>
+<div class="two-selects"><div class="field"><label>Loja de Origem:</label><select name="lojaOrigem" required><option value="">SELECIONAR LOJA</option><option>J O DE LIMA LTDA - MATRIZ</option><option>J O DE LIMA LTDA - PALHANO</option><option>J O DE LIMA LTDA - JAGUARUANA</option><option>J O DE LIMA LTDA - DEPOSITO</option><option>J O DE LIMA LTDA - LOJA 05</option><option>J O DE LIMA LTDA - LIMOEIRO</option><option>J O DE LIMA LTDA - ITAIÇABA</option><option>J O DE LIMA LTDA - FLORES</option><option>J O DE LIMA LTDA - ARACATI</option></select></div><div class="field"><label>Autorizada:</label><select name="autorizada" required><option value="">SELECIONAR AUTORIZADA</option><option>AUTORIZADA - LIVERTEC</option><option>AUTORIZADA - ELETRONICA GAUDENCIO</option><option>AUTORIZADA - ELECTROLUX LIMOEIRO</option><option>AUTORIZADA - ELETRO REFRIGERAÇAO LIMOEIRENSE</option><option>AUTORIZADA - WALBER</option><option>AUTORIZADA - OUTROS</option></select></div></div>
+<div class="field"><label>⚠ Defeito:</label><input name="defeito" required></div><div class="field"><label>📅 Data:</label><input name="dataAtual" readonly></div>
+<div class="sizebox"><div class="sectionhead"><div class="ico">📏</div><div><h2>Tamanho da etiqueta</h2><p>Escolha o modelo desejado</p></div></div><div class="sizecards"><label class="sizecard"><input type="radio" name="tamanho" value="grande" checked><span><strong>Grande</strong><small>12 cm de largura<br>2 etiquetas por página</small></span></label><label class="sizecard"><input type="radio" name="tamanho" value="pequena"><span><strong>Pequena</strong><small>8 cm de largura<br>2 etiquetas por página</small></span></label></div></div>
+<div class="buttons"><button type="button" class="save" onclick="salvarGerarPDF()">🖨️ &nbsp; Salvar & Gerar PDF</button><button type="button" class="clear" onclick="limparFormulario()">🧹 &nbsp; Limpar Formulário</button></div><div class="hint">Ao gerar, escolha “Salvar como PDF” e mantenha 100% / Tamanho real.</div></form></section>
+<section class="panel previewpanel"><div class="previewtop"><div class="sectionhead"><div class="ico">👁</div><div><h2>Pré-visualização da Etiqueta</h2><p>Veja como ficará sua etiqueta antes de imprimir</p></div></div><div class="warning">⚠ A pré-visualização é ilustrativa.<br>Para o tamanho correto, imprima em 100%.</div></div>
+<div class="previewgroup"><div class="grouphead large"><span>🏷 Modelo Grande (12 cm de largura)</span><span>2 etiquetas por página</span></div><div class="previewrow"><div id="prevLarge1"></div><div class="previewcut"></div><div id="prevLarge2"></div></div></div>
+<div class="previewgroup"><div class="grouphead small"><span>🏷 Modelo Pequeno (8 cm de largura)</span><span>2 etiquetas por página</span></div><div class="previewrow"><div id="prevSmall1"></div><div class="previewcut"></div><div id="prevSmall2"></div></div></div>
+<div class="bottominfo"><div class="info"><strong>💡 Dicas de Impressão</strong><br>Em “Imprimir”, selecione “Salvar como PDF” ou imprima em papel adesivo. Mantenha “Tamanho real” (100%).</div><div class="info"><strong>📄 Informações</strong><br>Modelo grande: 12 cm &nbsp;•&nbsp; Modelo pequeno: 8 cm<br>As duas opções geram 2 etiquetas.</div></div></section></div>
+<div class="footer"><span><b>MARAVILHA</b> &nbsp; | &nbsp; Ordem de Serviço - Etiquetas &nbsp; | &nbsp; a loja da sua família</span><span>v5.0</span></div><section id="printArea"></section>
+<script>
+const form=document.getElementById('etiquetaForm'),printArea=document.getElementById('printArea');
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function getData(){return Object.fromEntries(new FormData(form).entries())}
+function campos(d){return [['NOME:',d.nome],['TELEFONE:',d.telefone],['PRODUTOS:',d.produtos],['VENDA:',d.venda],['NOTA:',d.nota],['SÉRIE:',d.serie],['OS da loja:',d.osdaLoja],['OS do fabricante:',d.ordemServicos],['DEFEITO:',d.defeito]]}
+function etiqueta(d,t){const cls=t==='grande'?'grande':'pequena';return `<div class="etiqueta ${cls}"><div class="topo"><img class="logo" src="logo.png"><div class="titulo">ETIQUETA DE IDENTIFICAÇÃO</div><div class="subtopo">LOJA DE ORIGEM: ${esc(d.lojaOrigem)}<br>${esc(d.autorizada)} &nbsp; | &nbsp; DATA: ${esc(d.dataAtual)}</div></div><div class="campos">${campos(d).map(([l,v])=>`<div class="campo-label">${l}</div><div class="campo-pontos ${l==='PRODUTOS:'?'produto-pontos':''}"></div><div class="campo-valor ${l==='PRODUTOS:'?'produto':''}">${esc(v)}</div>`).join('')}</div></div>`}
+function previewLabel(d,t){const cls=t==='grande'?'large':'small';return `<div class="p-label ${cls}"><div class="p-top"><img class="p-logo" src="logo.png"><div class="p-title">ETIQUETA DE IDENTIFICAÇÃO</div><div class="p-sub">LOJA DE ORIGEM: ${esc(d.lojaOrigem||'—')}<br>${esc(d.autorizada||'—')} &nbsp; | &nbsp; DATA: ${esc(d.dataAtual||'—')}</div></div><div class="p-fields">${campos(d).map(([l,v])=>`<div class="p-name">${l}</div><div class="p-dots"></div><div class="p-val ${l==='PRODUTOS:'?'prod':''}">${esc(v||'—')}</div>`).join('')}</div></div>`}
+function updatePreview(){const d=getData();const L=previewLabel(d,'grande'),S=previewLabel(d,'pequena');prevLarge1.innerHTML=L;prevLarge2.innerHTML=L;prevSmall1.innerHTML=S;prevSmall2.innerHTML=S}
+window.addEventListener('load',()=>{const dados=JSON.parse(localStorage.getItem('etiqueta')||'{}');Object.keys(dados).forEach(k=>{const el=form.elements[k];if(!el)return;if(el instanceof RadioNodeList){[...el].forEach(r=>r.checked=r.value===dados[k])}else el.value=dados[k]});if(!form.elements.dataAtual.value)form.elements.dataAtual.value=new Date().toLocaleDateString('pt-BR');updatePreview()});form.addEventListener('input',updatePreview);form.addEventListener('change',updatePreview);
+function ajustarProdutos(){document.querySelectorAll('#printArea .etiqueta').forEach(et=>{const valor=et.querySelector('.campo-valor.produto'),pontos=et.querySelector('.campo-pontos.produto-pontos');if(!valor)return;const base=et.classList.contains('pequena')?5.05:7.2,minimo=et.classList.contains('pequena')?3.35:4.35;valor.style.cssText='';valor.style.whiteSpace='nowrap';valor.style.fontSize=base+'pt';if(pontos)pontos.style.minWidth='0';let guard=0;while(valor.scrollWidth>valor.clientWidth&&guard<16){const pt=parseFloat(getComputedStyle(valor).fontSize)*.75;if(pt<=minimo)break;valor.style.fontSize=Math.max(minimo,pt-.25)+'pt';guard++}if(valor.scrollWidth>valor.clientWidth){const ratio=Math.max(.68,valor.clientWidth/valor.scrollWidth);valor.style.transformOrigin='left center';valor.style.transform=`scaleX(${ratio})`;valor.style.width=(100/ratio)+'%'}})}
+function salvarGerarPDF(){if(!form.reportValidity())return;const d=getData();localStorage.setItem('etiqueta',JSON.stringify(d));const t=d.tamanho||'grande';printArea.innerHTML=etiqueta(d,t)+`<div class="corte ${t==='pequena'?'peq':''}"></div>`+etiqueta(d,t);requestAnimationFrame(()=>{ajustarProdutos();setTimeout(()=>window.print(),180)})}
+function limparFormulario(){if(!confirm('Tem certeza que deseja limpar todos os campos?'))return;localStorage.removeItem('etiqueta');form.reset();form.elements.dataAtual.value=new Date().toLocaleDateString('pt-BR');form.elements.tamanho.value='grande';updatePreview()}
+</script></body></html>
