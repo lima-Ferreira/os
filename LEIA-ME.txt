@@ -1,13 +1,18 @@
-ORDEM DE SERVIÇO - ETIQUETAS V5.0
+OS ETIQUETAS V6.2 — 4 ETIQUETAS COMPACTAS
 
-1. Dê dois cliques em ABRIR-SISTEMA.bat.
-2. Preencha o formulário.
-3. A pré-visualização à direita atualiza automaticamente.
-4. Escolha Grande (12 cm) ou Pequena (8 cm).
-5. Clique em Salvar & Gerar PDF.
-6. Na janela de impressão, escolha Salvar como PDF e mantenha 100% / Tamanho real.
+- Uma folha A4 gera 4 etiquetas:
+  1) Grande 12 cm
+  2) Grande 12 cm
+  3) Pequena 8 cm + Pequena 8 cm lado a lado
+- As etiquetas grandes foram compactadas na ALTURA, mantendo 12 cm reais de largura.
+- As pequenas mantêm 8 cm reais.
+- Campos normais voltaram a ter fonte mais legível.
+- Somente PRODUTOS usa ajuste automático:
+  * não quebra linha;
+  * usa todo o espaço restante da linha;
+  * reduz a própria fonte quando necessário;
+  * em descrições extremas, comprime horizontalmente para não passar da borda.
+- Linhas de corte ficaram mais próximas das etiquetas para economizar papel.
+- Imprima em A4 retrato e 100% / Tamanho real.
 
-IMPORTANTE:
-- A lógica da descrição de PRODUTOS continua autoajustável e sempre em uma única linha.
-- São geradas 2 etiquetas com linha pontilhada/tesoura.
-- Limpar Formulário pede confirmação.
+Execute ABRIR-SISTEMA.bat.

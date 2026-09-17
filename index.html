@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ordem de Serviço - Etiquetas V5</title>
+<title>Ordem de Serviço - Etiquetas V6</title>
 <style>
 *{box-sizing:border-box} :root{--red:#d71920;--red2:#ef3340;--navy:#102d5b;--ink:#142033;--muted:#6c7a91;--line:#dce4ef;--panel:#fff;--bg:#f4f7fb}
 body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);margin:0;color:var(--ink)}
@@ -12,22 +12,69 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);margin:0;color:
 #printArea{display:none}
 @media(max-width:1100px){.app{grid-template-columns:1fr}.topactions{display:none}.brand{width:250px}.p-label.large{min-width:330px}.previewrow{overflow:auto;justify-content:flex-start}}
 @media print{body{background:#fff}body>*:not(#printArea){display:none!important}#printArea{display:flex!important;flex-direction:column;align-items:center;width:100%;margin:0;padding:7mm 0}.etiqueta{border:.45mm solid #111;padding:3mm;position:relative;background:#fff}.etiqueta.grande{width:12cm;min-height:6.8cm}.etiqueta.pequena{width:8cm;min-height:5.25cm;padding:2mm}.topo{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:3mm;border-bottom:.25mm solid #444;padding-bottom:2mm;margin-bottom:2.5mm}.logo{object-fit:contain;object-position:left center}.grande .logo{width:26mm;height:10mm}.pequena .logo{width:18mm;height:7mm}.titulo{text-align:center;font-weight:800;background:#e9f2f8;padding:1.2mm 1mm}.grande .titulo{font-size:12pt}.pequena .titulo{font-size:8.5pt}.subtopo{grid-column:1/-1;text-align:center;font-weight:700;line-height:1.35}.grande .subtopo{font-size:7.4pt}.pequena .subtopo{font-size:5.8pt}.campos{display:grid;grid-template-columns:max-content minmax(8mm,1fr) minmax(0,2.05fr);column-gap:1.2mm;row-gap:1.25mm;align-items:end}.campo-label{font-weight:700;white-space:nowrap}.campo-pontos{border-bottom:.3mm dotted #333;transform:translateY(-1.1mm);min-width:8mm}.campo-valor{text-align:left;overflow-wrap:normal;line-height:1.15;min-width:0}.campo-valor.produto{white-space:nowrap;overflow:visible;letter-spacing:-.08mm}.campo-pontos.produto-pontos{min-width:0}.grande .campo-valor.produto{font-size:7.2pt}.pequena .campo-valor.produto{font-size:5.05pt;letter-spacing:-.11mm}.grande .campos{font-size:8.3pt}.pequena .campos{font-size:6.15pt;grid-template-columns:max-content minmax(4mm,1fr) minmax(0,2.25fr);column-gap:.8mm;row-gap:.85mm}.corte{display:flex;align-items:center;width:12cm;height:9mm;font-size:14pt}.corte.peq{width:8cm}.corte:before{content:'✂';margin-right:2mm}.corte:after{content:'';flex:1;border-top:.35mm dashed #222}@page{size:A4 portrait;margin:0}}
+
+@media print{
+  #printArea{display:block!important;width:210mm;height:297mm;padding:7mm 8mm!important;margin:0!important}
+  .folha-a4{width:194mm;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+  .linha-grandes{display:flex;flex-direction:column;align-items:center;gap:0;width:100%}
+  .linha-pequenas{display:flex;justify-content:center;align-items:flex-start;gap:8mm;width:100%}
+  .separador-horizontal{display:flex;align-items:center;width:100%;height:9mm;font-size:14pt}
+  .separador-horizontal:before{content:'✂';margin-right:2mm}
+  .separador-horizontal:after{content:'';flex:1;border-top:.35mm dashed #222}.separador-horizontal.grande-cut{width:12cm}
+  .etiqueta.grande{width:12cm;min-height:6.8cm}
+  .etiqueta.pequena{width:8cm;min-height:5.25cm}
+  /* Produto: dá prioridade total ao valor e nunca permite quebra */
+  .campos .campo-valor.produto{white-space:nowrap!important;overflow:visible!important;transform-origin:left center}
+  .campos .campo-pontos.produto-pontos{min-width:0!important}
+}
+
+@media print{
+  .campo-pontos.produto-pontos{display:none!important}
+  .campo-valor.produto{grid-column:2 / 4!important;width:100%!important;max-width:100%!important;overflow:hidden!important;white-space:nowrap!important;text-overflow:clip!important;transform-origin:left center!important}
+}
+
+@media print{
+  #printArea{display:block!important;width:210mm;height:297mm;padding:5mm 8mm!important;margin:0!important}
+  .folha-a4{width:194mm;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:0!important}
+  .linha-grandes{display:flex;flex-direction:column;align-items:center;gap:0!important;width:100%}
+  .linha-pequenas{display:flex;justify-content:center;align-items:flex-start;gap:8mm!important;width:100%}
+  .etiqueta{box-sizing:border-box!important}
+  .etiqueta.grande{width:120mm!important;min-height:0!important;height:auto!important;padding:2.2mm!important}
+  .etiqueta.pequena{width:80mm!important;min-height:0!important;height:auto!important;padding:1.6mm!important}
+  .grande .topo{gap:2mm!important;padding-bottom:1.2mm!important;margin-bottom:1.4mm!important}
+  .pequena .topo{gap:1.4mm!important;padding-bottom:.8mm!important;margin-bottom:1mm!important}
+  .grande .logo{width:23mm!important;height:8mm!important}
+  .pequena .logo{width:16mm!important;height:6mm!important}
+  .grande .titulo{font-size:11pt!important;padding:.8mm .8mm!important}
+  .pequena .titulo{font-size:8pt!important;padding:.55mm .5mm!important}
+  .grande .subtopo{font-size:7.2pt!important;line-height:1.18!important}
+  .pequena .subtopo{font-size:5.6pt!important;line-height:1.15!important}
+  .grande .campos{font-size:8.4pt!important;row-gap:.72mm!important;column-gap:1mm!important;grid-template-columns:max-content minmax(5mm,1fr) minmax(0,2.2fr)!important}
+  .pequena .campos{font-size:6.25pt!important;row-gap:.48mm!important;column-gap:.65mm!important;grid-template-columns:max-content minmax(2mm,1fr) minmax(0,2.45fr)!important}
+  .campo-valor:not(.produto){white-space:nowrap!important;overflow:hidden!important}
+  .campo-pontos.produto-pontos{display:none!important}
+  .campo-valor.produto{grid-column:2/4!important;width:100%!important;max-width:100%!important;white-space:nowrap!important;overflow:hidden!important;transform-origin:left center!important}
+  .separador-horizontal{height:6mm!important;margin:0!important}
+  .separador-horizontal.grande-cut{width:120mm!important;height:6mm!important}
+  .separador-horizontal:before{font-size:12pt!important}
+  @page{size:A4 portrait;margin:0}
+}
 </style></head>
 <body>
-<header class="topbar"><div class="brand"><img src="logo.png" alt="Maravilha"></div><div class="titlewrap"><div class="tagicon">🏷️</div><div><h1>Ordem de Serviço - Etiquetas</h1><p>Preencha os dados e gere etiquetas de identificação</p></div></div><div class="topactions"><button class="topaction" onclick="salvarGerarPDF()"><b>🖨️</b>Imprimir<br>Salvar em PDF</button><button class="topaction" onclick="document.querySelector('[name=tamanho]').focus()"><b>⚙️</b>Configurações<br>de etiqueta</button><button class="topaction" onclick="alert('Preencha os dados, escolha o tamanho e clique em Salvar & Gerar PDF. Na impressão use 100% / Tamanho real.')"><b>?</b>Sobre<br>o Sistema</button></div></header>
+<header class="topbar"><div class="brand"><img src="logo.png" alt="Maravilha"></div><div class="titlewrap"><div class="tagicon">🏷️</div><div><h1>Ordem de Serviço - Etiquetas</h1><p>Preencha os dados e gere 4 etiquetas (2 grandes + 2 pequenas)</p></div></div><div class="topactions"><button class="topaction" onclick="salvarGerarPDF()"><b>🖨️</b>Imprimir<br>Salvar em PDF</button><button class="topaction" onclick="document.querySelector('[name=tamanho]').focus()"><b>⚙️</b>Configurações<br>de etiqueta</button><button class="topaction" onclick="alert('Preencha os dados, escolha o tamanho e clique em Salvar & Gerar PDF. Na impressão use 100% / Tamanho real.')"><b>?</b>Sobre<br>o Sistema</button></div></header>
 <div class="app">
 <section class="panel formpanel"><div class="sectionhead"><div class="ico">📄</div><div><h2>Dados da Etiqueta</h2><p>Preencha as informações abaixo</p></div></div>
 <form id="etiquetaForm">
 <div class="field"><label>👤 Nome:</label><input name="nome" required></div><div class="field"><label>☎ Telefone:</label><input name="telefone" required></div><div class="field"><label>📦 Produtos:</label><input name="produtos" required></div><div class="field"><label>🛒 Venda:</label><input name="venda" required></div><div class="field"><label>📄 Nota:</label><input name="nota" required></div><div class="field"><label>▥ Número de Série:</label><input name="serie" required></div><div class="field"><label>🔧 OS da loja:</label><input name="osdaLoja" required></div><div class="field"><label>🏭 OS do fabricante:</label><input name="ordemServicos" required></div>
 <div class="two-selects"><div class="field"><label>Loja de Origem:</label><select name="lojaOrigem" required><option value="">SELECIONAR LOJA</option><option>J O DE LIMA LTDA - MATRIZ</option><option>J O DE LIMA LTDA - PALHANO</option><option>J O DE LIMA LTDA - JAGUARUANA</option><option>J O DE LIMA LTDA - DEPOSITO</option><option>J O DE LIMA LTDA - LOJA 05</option><option>J O DE LIMA LTDA - LIMOEIRO</option><option>J O DE LIMA LTDA - ITAIÇABA</option><option>J O DE LIMA LTDA - FLORES</option><option>J O DE LIMA LTDA - ARACATI</option></select></div><div class="field"><label>Autorizada:</label><select name="autorizada" required><option value="">SELECIONAR AUTORIZADA</option><option>AUTORIZADA - LIVERTEC</option><option>AUTORIZADA - ELETRONICA GAUDENCIO</option><option>AUTORIZADA - ELECTROLUX LIMOEIRO</option><option>AUTORIZADA - ELETRO REFRIGERAÇAO LIMOEIRENSE</option><option>AUTORIZADA - WALBER</option><option>AUTORIZADA - OUTROS</option></select></div></div>
 <div class="field"><label>⚠ Defeito:</label><input name="defeito" required></div><div class="field"><label>📅 Data:</label><input name="dataAtual" readonly></div>
-<div class="sizebox"><div class="sectionhead"><div class="ico">📏</div><div><h2>Tamanho da etiqueta</h2><p>Escolha o modelo desejado</p></div></div><div class="sizecards"><label class="sizecard"><input type="radio" name="tamanho" value="grande" checked><span><strong>Grande</strong><small>12 cm de largura<br>2 etiquetas por página</small></span></label><label class="sizecard"><input type="radio" name="tamanho" value="pequena"><span><strong>Pequena</strong><small>8 cm de largura<br>2 etiquetas por página</small></span></label></div></div>
-<div class="buttons"><button type="button" class="save" onclick="salvarGerarPDF()">🖨️ &nbsp; Salvar & Gerar PDF</button><button type="button" class="clear" onclick="limparFormulario()">🧹 &nbsp; Limpar Formulário</button></div><div class="hint">Ao gerar, escolha “Salvar como PDF” e mantenha 100% / Tamanho real.</div></form></section>
+<div class="sizebox" style="display:none"><div class="sectionhead"><div class="ico">📏</div><div><h2>Tamanho da etiqueta</h2><p>Escolha o modelo desejado</p></div></div><div class="sizecards"><label class="sizecard"><input type="radio" name="tamanho" value="grande" checked><span><strong>Grande</strong><small>12 cm de largura<br>2 etiquetas por página</small></span></label><label class="sizecard"><input type="radio" name="tamanho" value="pequena"><span><strong>Pequena</strong><small>8 cm de largura<br>2 etiquetas por página</small></span></label></div></div>
+<div class="buttons"><button type="button" class="save" onclick="salvarGerarPDF()">🖨️ &nbsp; Gerar PDF (4 etiquetas)</button><button type="button" class="clear" onclick="limparFormulario()">🧹 &nbsp; Limpar Formulário</button></div><div class="hint">Ao gerar, escolha “Salvar como PDF” e mantenha 100% / Tamanho real.</div></form></section>
 <section class="panel previewpanel"><div class="previewtop"><div class="sectionhead"><div class="ico">👁</div><div><h2>Pré-visualização da Etiqueta</h2><p>Veja como ficará sua etiqueta antes de imprimir</p></div></div><div class="warning">⚠ A pré-visualização é ilustrativa.<br>Para o tamanho correto, imprima em 100%.</div></div>
 <div class="previewgroup"><div class="grouphead large"><span>🏷 Modelo Grande (12 cm de largura)</span><span>2 etiquetas por página</span></div><div class="previewrow"><div id="prevLarge1"></div><div class="previewcut"></div><div id="prevLarge2"></div></div></div>
 <div class="previewgroup"><div class="grouphead small"><span>🏷 Modelo Pequeno (8 cm de largura)</span><span>2 etiquetas por página</span></div><div class="previewrow"><div id="prevSmall1"></div><div class="previewcut"></div><div id="prevSmall2"></div></div></div>
-<div class="bottominfo"><div class="info"><strong>💡 Dicas de Impressão</strong><br>Em “Imprimir”, selecione “Salvar como PDF” ou imprima em papel adesivo. Mantenha “Tamanho real” (100%).</div><div class="info"><strong>📄 Informações</strong><br>Modelo grande: 12 cm &nbsp;•&nbsp; Modelo pequeno: 8 cm<br>As duas opções geram 2 etiquetas.</div></div></section></div>
-<div class="footer"><span><b>MARAVILHA</b> &nbsp; | &nbsp; Ordem de Serviço - Etiquetas &nbsp; | &nbsp; a loja da sua família</span><span>v5.0</span></div><section id="printArea"></section>
+<div class="bottominfo"><div class="info"><strong>💡 Dicas de Impressão</strong><br>Em “Imprimir”, selecione “Salvar como PDF” ou imprima em papel adesivo. Mantenha “Tamanho real” (100%).</div><div class="info"><strong>📄 Informações</strong><br>Modelo grande: 12 cm &nbsp;•&nbsp; Modelo pequeno: 8 cm<br>A folha gera 2 etiquetas grandes (12 cm) e 2 pequenas (8 cm). As grandes ficam uma abaixo da outra para manter 12 cm reais no A4.</div></div></section></div>
+<div class="footer"><span><b>MARAVILHA</b> &nbsp; | &nbsp; Ordem de Serviço - Etiquetas &nbsp; | &nbsp; a loja da sua família</span><span>v6.2</span></div><section id="printArea"></section>
 <script>
 const form=document.getElementById('etiquetaForm'),printArea=document.getElementById('printArea');
 function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
@@ -37,7 +84,42 @@ function etiqueta(d,t){const cls=t==='grande'?'grande':'pequena';return `<div cl
 function previewLabel(d,t){const cls=t==='grande'?'large':'small';return `<div class="p-label ${cls}"><div class="p-top"><img class="p-logo" src="logo.png"><div class="p-title">ETIQUETA DE IDENTIFICAÇÃO</div><div class="p-sub">LOJA DE ORIGEM: ${esc(d.lojaOrigem||'—')}<br>${esc(d.autorizada||'—')} &nbsp; | &nbsp; DATA: ${esc(d.dataAtual||'—')}</div></div><div class="p-fields">${campos(d).map(([l,v])=>`<div class="p-name">${l}</div><div class="p-dots"></div><div class="p-val ${l==='PRODUTOS:'?'prod':''}">${esc(v||'—')}</div>`).join('')}</div></div>`}
 function updatePreview(){const d=getData();const L=previewLabel(d,'grande'),S=previewLabel(d,'pequena');prevLarge1.innerHTML=L;prevLarge2.innerHTML=L;prevSmall1.innerHTML=S;prevSmall2.innerHTML=S}
 window.addEventListener('load',()=>{const dados=JSON.parse(localStorage.getItem('etiqueta')||'{}');Object.keys(dados).forEach(k=>{const el=form.elements[k];if(!el)return;if(el instanceof RadioNodeList){[...el].forEach(r=>r.checked=r.value===dados[k])}else el.value=dados[k]});if(!form.elements.dataAtual.value)form.elements.dataAtual.value=new Date().toLocaleDateString('pt-BR');updatePreview()});form.addEventListener('input',updatePreview);form.addEventListener('change',updatePreview);
-function ajustarProdutos(){document.querySelectorAll('#printArea .etiqueta').forEach(et=>{const valor=et.querySelector('.campo-valor.produto'),pontos=et.querySelector('.campo-pontos.produto-pontos');if(!valor)return;const base=et.classList.contains('pequena')?5.05:7.2,minimo=et.classList.contains('pequena')?3.35:4.35;valor.style.cssText='';valor.style.whiteSpace='nowrap';valor.style.fontSize=base+'pt';if(pontos)pontos.style.minWidth='0';let guard=0;while(valor.scrollWidth>valor.clientWidth&&guard<16){const pt=parseFloat(getComputedStyle(valor).fontSize)*.75;if(pt<=minimo)break;valor.style.fontSize=Math.max(minimo,pt-.25)+'pt';guard++}if(valor.scrollWidth>valor.clientWidth){const ratio=Math.max(.68,valor.clientWidth/valor.scrollWidth);valor.style.transformOrigin='left center';valor.style.transform=`scaleX(${ratio})`;valor.style.width=(100/ratio)+'%'}})}
-function salvarGerarPDF(){if(!form.reportValidity())return;const d=getData();localStorage.setItem('etiqueta',JSON.stringify(d));const t=d.tamanho||'grande';printArea.innerHTML=etiqueta(d,t)+`<div class="corte ${t==='pequena'?'peq':''}"></div>`+etiqueta(d,t);requestAnimationFrame(()=>{ajustarProdutos();setTimeout(()=>window.print(),180)})}
+function ajustarProdutos(){
+  document.querySelectorAll('#printArea .campo-valor.produto').forEach(valor=>{
+    const et=valor.closest('.etiqueta');
+    const pequena=et.classList.contains('pequena');
+    const base=pequena?6.0:8.0;
+    const minimo=pequena?2.6:3.6;
+    valor.style.whiteSpace='nowrap';
+    valor.style.overflow='hidden';
+    valor.style.transform='none';
+    valor.style.width='100%';
+    valor.style.fontSize=base+'pt';
+    valor.style.letterSpacing='0';
+    const disponivel=Math.max(1,valor.clientWidth-1);
+    let size=base, guard=0;
+    while(valor.scrollWidth>disponivel && size>minimo && guard<60){
+      size=Math.max(minimo,size-.15);
+      valor.style.fontSize=size+'pt';
+      guard++;
+    }
+    if(valor.scrollWidth>disponivel){
+      const ratio=Math.max(.38,disponivel/valor.scrollWidth);
+      valor.style.transform=`scaleX(${ratio})`;
+      valor.style.width=(100/ratio)+'%';
+    }
+  });
+}
+function salvarGerarPDF(){
+  if(!form.reportValidity())return;
+  const d=getData();
+  localStorage.setItem('etiqueta',JSON.stringify(d));
+  printArea.innerHTML=`<div class="folha-a4">
+    <div class="linha-grandes">${etiqueta(d,'grande')}<div class="separador-horizontal grande-cut"></div>${etiqueta(d,'grande')}</div>
+    <div class="separador-horizontal"></div>
+    <div class="linha-pequenas">${etiqueta(d,'pequena')}${etiqueta(d,'pequena')}</div>
+  </div>`;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{ajustarProdutos();setTimeout(()=>{ajustarProdutos();window.print()},350)}));
+}
 function limparFormulario(){if(!confirm('Tem certeza que deseja limpar todos os campos?'))return;localStorage.removeItem('etiqueta');form.reset();form.elements.dataAtual.value=new Date().toLocaleDateString('pt-BR');form.elements.tamanho.value='grande';updatePreview()}
 </script></body></html>
